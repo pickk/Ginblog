@@ -1,6 +1,6 @@
 <div align="center">
 
-# Ginblog（项目已完成，欢迎使用)
+# Ginblog（二次开发，下面为原作者的内容)
 
 </div>
 
