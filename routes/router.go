@@ -1,34 +1,60 @@
 package routes
 
-import (
-	"github.com/gin-contrib/multitemplate"
-	"github.com/gin-gonic/gin"
-	"github.com/wejectchen/ginblog/api/v1"
-	"github.com/wejectchen/ginblog/middleware"
-	"github.com/wejectchen/ginblog/utils"
-)
+// 引入多模板渲染器包
+import "github.com/gin-contrib/multitemplate"
 
+// 引入Gin框架
+import "github.com/gin-gonic/gin"
+
+// 引入API版本1的包
+import "github.com/wejectchen/ginblog/api/v1"
+
+// 引入中间件包
+import "github.com/wejectchen/ginblog/middleware"
+
+// 引入工具函数包
+import "github.com/wejectchen/ginblog/utils"
+
+// createMyRender 创建一个多模板渲染器
 func createMyRender() multitemplate.Renderer {
+	// 初始化多模板渲染器
 	p := multitemplate.NewRenderer()
+	// 添加管理员模板文件
 	p.AddFromFiles("admin", "web/admin/dist/index.html")
+	// 添加前端模板文件
 	p.AddFromFiles("front", "web/front/dist/index.html")
 	return p
 }
-
 func InitRouter() {
+	// 设置 Gin 运行模式
 	gin.SetMode(utils.AppMode)
-	r := gin.New()
+	r := gin.New() // 创建一个新的 Gin 实例
+
 	// 设置信任网络 []string
-	// nil 为不计算，避免性能消耗，上线应当设置
+	// nil 表示不计算信任代理，避免性能消耗。上线时应当配置为具体的可信代理 IP 列表
 	_ = r.SetTrustedProxies(nil)
 
+	// 设置 HTML 渲染器
 	r.HTMLRender = createMyRender()
+
+	// 使用自定义的日志中间件
 	r.Use(middleware.Logger())
+
+	// 使用 Gin 的恢复中间件，用于捕获恐慌 (panic) 并恢复，防止程序崩溃
 	r.Use(gin.Recovery())
+
+	// 使用自定义的跨域中间件，允许跨域请求
 	r.Use(middleware.Cors())
 
+	// 设置静态资源路径
+	// 将请求路径 "/static" 映射到本地 "./web/front/dist/static" 目录，提供前端静态资源
 	r.Static("/static", "./web/front/dist/static")
+
+	// 将请求路径 "/admin" 映射到本地 "./web/admin/dist" 目录，提供后台管理的静态页面
 	r.Static("/admin", "./web/admin/dist")
+
+	// 设置 favicon.ico 文件路径
+	// 将 "/favicon.ico" 映射到本地路径 "/web/front/dist/favicon.ico" 文件
 	r.StaticFile("/favicon.ico", "/web/front/dist/favicon.ico")
 
 	r.GET("/", func(c *gin.Context) {

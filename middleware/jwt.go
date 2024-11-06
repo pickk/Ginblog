@@ -62,14 +62,24 @@ func (j *JWT) ParserToken(tokenString string) error {
 // todo 优化此类代码
 func JwtToken() gin.HandlerFunc {
 	return func(c *gin.Context) {
+		// 定义状态码变量
 		var code int
+
+		// 从请求头获取 Authorization 字段
 		tokenHeader := c.Request.Header.Get("Authorization")
+
+		// 检查 Authorization 字段是否为空
 		if tokenHeader == "" {
+			// 设置错误状态码，表示缺少 token
 			code = errmsg.ERROR_TOKEN_EXIST
+
+			// 返回 JSON 响应，包含状态码和错误信息
 			c.JSON(http.StatusOK, gin.H{
 				"status":  code,
-				"message": errmsg.GetErrMsg(code),
+				"message": errmsg.GetErrMsg(code), // 获取对应的错误信息
 			})
+
+			// 中止后续处理
 			c.Abort()
 			return
 		}

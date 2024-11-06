@@ -149,8 +149,7 @@ QiniuSever =
 
 ```shell
 首页
-http://localhost:3000
-后台管理页面
+ccc后台管理页面
 http://localhost:3000/admin
 
 默认管理员:admin  密码:123456

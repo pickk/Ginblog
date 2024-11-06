@@ -27,11 +27,14 @@ func AddComment(data *Comment) int {
 
 // GetComment 查询单个评论
 func GetComment(id int) (Comment, int) {
-	var comment Comment
-	err = db.Where("id = ?", id).First(&comment).Error
+	var comment Comment // 定义一个 Comment 类型的变量，用于存储查询结果
+	// 使用数据库查询，通过 id 查找对应的评论
+	err := db.Where("id = ?", id).First(&comment).Error
 	if err != nil {
+		// 如果查询出错，返回错误状态码 errmsg.ERROR 和空的 comment
 		return comment, errmsg.ERROR
 	}
+	// 查询成功，返回查询到的 comment 和成功状态码 errmsg.SUCCESS
 	return comment, errmsg.SUCCESS
 }
 
