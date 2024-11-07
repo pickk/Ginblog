@@ -13,7 +13,7 @@
     "core-js": "latest",
     "dayjs": "latest",
     "primeicons": "latest",
-    "primevue": "latest",
+    "vuetify": "latest",
     "vue": "latest",
     "vue-router": "latest"
   },
