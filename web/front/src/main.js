@@ -1,19 +1,17 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify'
-import day from 'dayjs'
+import dayjs  from 'dayjs'
 
 import './plugins/http'
+const app = createApp(App)
+app.config.globalProperties.$dateFormat = (indate, outdate) => {
+  return dayjs(indate).format(outdate)
+}
 
-Vue.filter('dateformat', function(indate, outdate) {
-  return day(indate).format(outdate)
-})
+app.use(router)
 
-Vue.config.productionTip = false
+app.use(vuetify)
 
-new Vue({
-  router,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+app.mount('#app')
