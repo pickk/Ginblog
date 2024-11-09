@@ -507,7 +507,7 @@ DbName = ginblog
 - 最后我们在确定下前端 `web` 文件夹下的axios请求地址。`前端推荐使用 Nginx 部署`
 
 ```js
-// 在 web/admin/src/plugin/http.js 和 web/front/src/plugin/http.js 两个文件夹中,将 baseURL地址改为部署的服务器线上地址
+// 在 web/admin/src/plugin/axios.js 和 web/front/src/plugin/axios.js 两个文件夹中,将 baseURL地址改为部署的服务器线上地址
 
 axios.defaults.baseURL = 'http://localhost:3000/api/v1'
 
