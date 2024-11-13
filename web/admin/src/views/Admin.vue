@@ -1,6 +1,6 @@
 <template>
   <a-layout class="container">
-    <Nav></Nav>
+    <ANav></ANav>
 
     <a-layout>
       <a-layout-header class="headerBtn">
@@ -10,7 +10,7 @@
         <router-view :key="$route.fullPath"></router-view>
       </a-layout-content>
       <a-layout-footer class="footer">
-        <Footer></Footer>
+        <AFooter></AFooter>
       </a-layout-footer>
     </a-layout>
   </a-layout>

@@ -1,21 +1,30 @@
 <template>
   <div>
-    <v-app-bar mobileBreakpoint="sm" app dark flat color="indigo darken-2">
+    <v-app-bar mobileBreakpoint="sm" app dark flat color="lightpink">
       <v-app-bar-nav-icon dark class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
         <v-app-bar-nav-icon class="mx-15 hidden-md-and-down">
           <v-avatar size="40" color="grey">
+
             <img src="../assets/logo.png" alt />
           </v-avatar>
         </v-app-bar-nav-icon>
       </v-toolbar-title>
-
+      <v-btn>
+        Button
+      </v-btn>
+      <v-btn>
+        Button
+      </v-btn>
+      <v-btn>
+        Button
+      </v-btn>
       <v-tabs dark center-active centered class="hidden-sm-and-down">
         <v-tab @click="$router.push('/')">首页</v-tab>
         <v-tab
           v-for="item in cateList"
           :key="item.id"
-          text
+          text="trgtrhrdt"
           @click="gotoCate(item.id)"
         >{{ item.name }}</v-tab>
       </v-tabs>

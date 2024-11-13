@@ -5,6 +5,7 @@ import vuetify from './plugins/vuetify'
 import dayjs  from 'dayjs'
 
 import axios from './plugins/axios'
+
 const app = createApp(App)
 app.config.globalProperties.$dateFormat = (indate, outdate) => {
   return dayjs(indate).format(outdate)

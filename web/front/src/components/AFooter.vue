@@ -11,17 +11,25 @@
 </template>
 
 <script>
+import { eventBus } from '@/eventBus'
+
 export default {
+  name: 'AFooter',
   data() {
     return {
-      icp_record: ''
+      icp_record: '',
     }
   },
   mounted() {
-    this.$root.$on('msg', (msg) => {
+    // 使用 eventBus.on 来监听 'msg' 事件
+    eventBus.on('msg', (msg) => {
       this.icp_record = msg
     })
-  }
+  },
+  beforeUnmount() {
+    // 在组件卸载之前移除监听器，防止内存泄漏
+    eventBus.off('msg')
+  },
 }
 </script>
 

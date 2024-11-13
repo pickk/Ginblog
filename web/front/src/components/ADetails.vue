@@ -146,14 +146,14 @@ export default {
 }
 </script>
 <style scoped>
-.content >>> div,
+.content :deep(div),
 img,
 span {
   width: auto;
   max-width: 100%;
 }
 
-.content >>> pre,
+.content :deep(pre),
 code {
   margin: 10px;
   padding: 14px;

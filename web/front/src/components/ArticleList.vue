@@ -32,7 +32,7 @@
       </v-card-title>
 
       <!-- 卡片副标题，显示文章的描述 -->
-      <v-card-subtitle class="mt-1" v-text="item.desc"></v-card-subtitle>
+      <v-card-subtitle class="mt-1" {{item.desc}}></v-card-subtitle>
 
       <!-- 分割线，用于分隔不同部分 -->
       <v-divider class="mx-4"></v-divider>
@@ -127,7 +127,6 @@ export default {
 
   // 方法选项，用于定义组件的函数和业务逻辑
   methods: {
-    $router,
     // 获取文章列表的方法
     async getArtList() {
       // 发起 HTTP GET 请求获取文章数据

@@ -34,7 +34,7 @@
 
       <v-list-item>
         <v-list-item-icon class="ma-3">
-          <v-icon color="orange darken-2">{{'mdi-sina-weibo'}}</v-icon>
+          <v-icon color="orange darken-2"> mdi-sina-weibo </v-icon>
         </v-list-item-icon>
         <v-list-item-content class="grey--text">{{profileInfo.weibo}}</v-list-item-content>
       </v-list-item>
@@ -57,6 +57,8 @@
 </template>
 <script>
 export default {
+  name: 'ANav',
+
   data() {
     return {
       profileInfo: {
@@ -69,12 +71,13 @@ export default {
   },
   methods: {
     // 获取个人设置
+    // 获取个人设置
     async getProfileInfo() {
       const { data: res } = await this.$http.get(
         `profile/${this.profileInfo.id}`
       )
       this.profileInfo = res.data
-      this.$root.$emit('msg', res.data.icp_record)
+      this.eventBus.emit('msg', res.data.icp_record)
     }
   }
 }

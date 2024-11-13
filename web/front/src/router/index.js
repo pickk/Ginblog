@@ -3,11 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 const ArticleList = () =>
     import(/* webpackChunkName: "group-index" */ '../components/ArticleList.vue')
 const Detail = () =>
-    import(/* webpackChunkName: "group-detail" */ '../components/Details.vue')
+    import(/* webpackChunkName: "group-detail" */ '../components/ADetails.vue')
 const Category = () =>
     import(/* webpackChunkName: "group-category" */ '../components/CateList.vue')
 const Search = () =>
-    import(/* webpackChunkName: "group-search" */ '../components/Search.vue')
+    import(/* webpackChunkName: "group-search" */ '../components/ASearch.vue')
 
 // 定义路由表
 const routes = [

@@ -27,7 +27,7 @@
               >{{ item.Category.name }}</v-chip>
               <div>{{ item.title }}</div>
             </v-card-title>
-            <v-card-subtitle class="mt-1" v-text="item.desc"></v-card-subtitle>
+            <v-card-subtitle class="mt-1" {{item.desc}}></v-card-subtitle>
             <v-divider class="mx-4"></v-divider>
             <v-card-text class="d-flex align-center">
               <div class="d-flex align-center">
@@ -59,6 +59,7 @@
 </template>
 <script>
 export default {
+
   props: ['title'],
   data() {
     return {

@@ -6,7 +6,7 @@
       <v-container>
         <v-row>
           <v-col cols="12" md="3">
-            <Nav></Nav>
+            <ANav></ANav>
           </v-col>
           <v-col cols="12" md="9">
             <v-sheet min-height="80vh" rounded="lg">
@@ -17,15 +17,16 @@
       </v-container>
     </v-main>
 
-    <Footer></Footer>
+    <AFooter></AFooter>
   </v-app>
 </template>
 
 <script>
 import TopBar from '../components/TopBar'
-import Footer from '../components/Footer'
-import Nav from '../components/Nav'
+import AFooter from '../components/AFooter.vue'
+import ANav from '../components/ANav.vue'
 export default {
-  components: { TopBar, Footer, Nav }
+
+  components: { TopBar, AFooter, ANav }
 }
 </script>
